@@ -1,35 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import HistoricoComprasForm from './components/HistoricoComprasForm';
-import HistoricoComprasList from './components/HistoricoComprasList';
-import axios from 'axios';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import CadastroFornecedor from './pages/cadastroFornecedor';
+import CadastroProduto from './pages/cadastroProduto';
+import ProductList from './components/productList';
+import RegistroCompras from './pages/registroCompras';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+import './index.css'
 
 const App = () => {
-  const [historicoCompras, setHistoricoCompras] = useState([]);
-
-  const fetchHistoricoCompras = async () => {
-    try {
-      const response = await axios.get('http://localhost:3001/purchase-history');
-      setHistoricoCompras(response.data);
-    } catch (error) {
-      console.error('Erro ao buscar histórico de compras:', error);
-    }
-  };
-
-  useEffect(() => {
-    fetchHistoricoCompras();
-  }, []);
-
-  const updateHistoricoCompras = (novoRegistro) => {
-    setHistoricoCompras(prevHistorico => [...prevHistorico, novoRegistro]);
-  };
-
-  return (
-    <div className="App">
-      <h1>Registro de Histórico de Compras</h1>
-      <HistoricoComprasForm onRegistro={updateHistoricoCompras} />
-      <HistoricoComprasList historicoCompras={historicoCompras} />
-    </div>
-  );
+    return (
+        <Router>
+            <Navbar />
+            <div className="container mx-auto mt-4">
+                <Routes>
+                    <Route path="/fornecedor" element={<CadastroFornecedor />} />
+                    <Route path="/produto" element={<CadastroProduto />} />
+                    <Route path="/lista-produtos" element={<ProductList />} />
+                    <Route path="/compras" element={<RegistroCompras />} />
+                </Routes>
+            </div>
+        </Router>
+    );
 };
 
 export default App;
