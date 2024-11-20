@@ -6,7 +6,9 @@ import CadastroProduto from './pages/cadastroProduto';
 import ProductList from './components/productList';
 import RegistroCompras from './pages/registroCompras';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
-import './index.css'
+import './index.css';
+import RegistroComprasList from './pages/registroCompraList';
+
 
 const App = () => {
     return (
@@ -18,6 +20,7 @@ const App = () => {
                     <Route path="/produto" element={<CadastroProduto />} />
                     <Route path="/lista-produtos" element={<ProductList />} />
                     <Route path="/compras" element={<RegistroCompras />} />
+                    <Route path="/lista-compras" element={<RegistroComprasList />} />
                 </Routes>
             </div>
         </Router>

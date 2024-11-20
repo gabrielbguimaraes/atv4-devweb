@@ -27,6 +27,11 @@ const Navbar = () => {
                             Registro Compras
                         </Link>
                     </li>
+                    <li>
+                        <Link to="/lista-compras" className="text-white hover:underline">
+                            Lista de Compras
+                        </Link>
+                    </li> 
                 </ul>
             </div>
         </nav>
